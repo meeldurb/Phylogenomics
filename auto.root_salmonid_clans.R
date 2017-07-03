@@ -72,19 +72,19 @@ auto.root = function(input.tree, outgr=c('Mmus', 'Hsap', 'Drer', 'Gacu', 'Olat')
 }
 
 
-
-
-
-
-tr = "((((((((Omyk2|CIGENEomyV6.41072:0.00055,Omyk|GSONMT00002897001:0.03238)0.966:0.00292,Ssal|XP_013993288.1:0.00055):0.00159,Okis|gb|GDQG01036265.1||m.63677:0.00934)0.823:0.00152,Tthy|Tthy_00032335-RD:0.00413)0.505:0.00907,(((Omyk2|CIGENEomyV6.34600:0.00054,Omyk|GSONMT00074661001:0.00055)0.984:0.0156,Ssal|XP_014052884.1:0.0029)0.966:0.00343,Tthy|Tthy_00027454-RA:0.00951)0.969:0.00438)0.999:0.00155,Eluc|XP_010902685.1:0.01043)0.816:0.0661,Mmus|ENSORLP00000000831.1:0.02215)1.000:0,Hsap|ENSGACP00000026666.1:0.01773)Root;"
-
-tree = read.tree(text=tr)
-
-par(mfrow=c(2,1))
-plot(tree)
-
-tree = unroot(tree)
-plot(tree, type='unrooted')
-
-plot(auto.root(tree)$rooted.clans)
+# 
+# 
+# 
+# 
+# tr = "((((((((Omyk2|CIGENEomyV6.41072:0.00055,Omyk|GSONMT00002897001:0.03238)0.966:0.00292,Ssal|XP_013993288.1:0.00055):0.00159,Okis|gb|GDQG01036265.1||m.63677:0.00934)0.823:0.00152,Tthy|Tthy_00032335-RD:0.00413)0.505:0.00907,(((Omyk2|CIGENEomyV6.34600:0.00054,Omyk|GSONMT00074661001:0.00055)0.984:0.0156,Ssal|XP_014052884.1:0.0029)0.966:0.00343,Tthy|Tthy_00027454-RA:0.00951)0.969:0.00438)0.999:0.00155,Eluc|XP_010902685.1:0.01043)0.816:0.0661,Mmus|ENSORLP00000000831.1:0.02215)1.000:0,Hsap|ENSGACP00000026666.1:0.01773)Root;"
+# 
+# tree = read.tree(text=tr)
+# 
+# par(mfrow=c(2,1))
+# plot(tree)
+# 
+# tree = unroot(tree)
+# plot(tree, type='unrooted')
+# 
+# plot(auto.root(tree)$rooted.clans)
 
