@@ -19,17 +19,17 @@ auto.root = function(input.tree, outgr=c('Mmus', 'Hsap', 'Drer', 'Gacu', 'Olat')
   # if mammal outgroups present
   
   if(sum(unique(names(put.root)) %in% c('Mmus', 'Hsap'))==2){
-    cat('Minimum two mammal outgroups\n')
+    #cat('Minimum two mammal outgroups\n')
     mam.root = grep('Mmus|Hsap', tree$tip.label)
     
     
     if(is.monophyletic(tree, tips = mam.root, reroot = T)) { 
-      cat('Monophyletic mammal outgroup\n')
+      #cat('Monophyletic mammal outgroup\n')
       root.node = getMRCA(tree, mam.root)
       tr = try(root(tree, node = root.node, resolve.root = T), silent=T)
       if(class(tr)!='try-error') { return(list(rooted.clans=tr, root.info='Monophyletic_mammal_root', fail.root=F) ) }
       if(class(tr)=='try-error') { 
-        cat('Problems with mammal node rooting\n....rooting with human\n')
+        #cat('Problems with mammal node rooting\n....rooting with human\n')
         tr = try(root(tree, outgroup=grep('Hsap', tree$tip.label)[1], resolve.root = T), silent=T)
         if(class(tr)!='try-error') return(list(rooted.clans=tr, root.info='Human_root - mammals not monophyletic', fail.root=F))
         if(class(tr)=='try-error') return(list(rooted.clans=input.tree, root.info='Human_root - mammals not monophyletic', fail.root=T))
@@ -37,15 +37,15 @@ auto.root = function(input.tree, outgr=c('Mmus', 'Hsap', 'Drer', 'Gacu', 'Olat')
     }
     
     if(!is.monophyletic(tree, mam.root, reroot = F)) { 
-      cat('NOT Monophyletic mammal outgroup\n')
+      #cat('NOT Monophyletic mammal outgroup\n')
       root.node = getMRCA(tree, mam.root)
       tr = try(root(tree, node = root.node, resolve.root = T), silent = T)
       if(class(tr)!='try-error') { 
-        cat('Rooting with MRCA-node of all outgroups\n')
+        #cat('Rooting with MRCA-node of all outgroups\n')
         return(list(rooted.clans=tr, root.info='MRCA-node of all outgroups', fail.root=F))
       }
       if(class(tr)=='try-error') { 
-        cat('Problems with mammal node rooting\n....rooting with a random human\n')
+        #cat('Problems with mammal node rooting\n....rooting with a random human\n')
         tr = try(root(tree, outgroup=grep('Hsap', tree$tip.label)[1], resolve.root = T), silent=T)
         if(class(tr)!='try-error') return(list(rooted.clans=tr, root.info='Random_human', fail.root=F))
         if(class(tr)=='try-error') return(list(rooted.clans=input.tree, root.info='Random_human', fail.root=T))
@@ -54,13 +54,13 @@ auto.root = function(input.tree, outgr=c('Mmus', 'Hsap', 'Drer', 'Gacu', 'Olat')
     
   }
   if(sum(unique(names(put.root)) %in% c('Mmus', 'Hsap'))==1){
-    cat('One mammal outgroup\n')
+    #cat('One mammal outgroup\n')
     tr = try(root(tree, outgroup= put.root[1], resolve.root = T), silent=T)
     if(class(tr)!='try-error') return(list(rooted.clans=tr, root.info='Single_mammal_outgroup', fail.root=F))
     if(class(tr)=='try-error') return(list(rooted.clans=input.tree, root.info='Single_mammal_outgroup', fail.root=T))
   }
   if(sum(unique(names(put.root)) %in% c('Mmus', 'Hsap'))==0){
-    cat('No mammal outgroup\n')
+    #cat('No mammal outgroup\n')
     tr = try(ingroupMRCA.rooting(tree), silent = T)
     if(class(tr)!= 'try-error') return(list(rooted.clans=tr, root.info='ingroup_MRCA', fail.root=F))
     if(class(tr)=='try-error') {
